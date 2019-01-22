@@ -4,6 +4,9 @@
 
 let output = document.querySelector("#output");
 let dateContainer = document.createElement("div");
+let title = document.createElement("h2");
+title.textContent = "It is currently:";
+output.appendChild(title);
 
 function getTimeDisplay() {
 
@@ -15,9 +18,8 @@ function getTimeDisplay() {
     let hour = d.getHours();
     let minutes = ("0" + d.getMinutes()).slice(-2);
     let seconds = ("0" + d.getSeconds()).slice(-2);
-    let timestamp = "It is currently: " + hour + ":" + minutes + ":" + seconds + " on " + months[month] + "/" + date + "/" + year;
+    let timestamp = hour + ":" + minutes + ":" + seconds + " on " + months[month] + "/" + date + "/" + year;
     dateContainer.innerHTML = timestamp;
-
 }
 
 output.appendChild(dateContainer);
@@ -25,6 +27,6 @@ getTimeDisplay();
 
 let button = document.createElement("button");
 button.innerHTML = "Update Time";
-output.appendChild(button);
-
+button.setAttribute("class", "button");
 button.addEventListener("click", getTimeDisplay);
+output.appendChild(button);
